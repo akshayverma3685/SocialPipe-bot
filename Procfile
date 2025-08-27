@@ -1,7 +1,2 @@
-fastapi
-uvicorn[standard]
-python-telegram-bot==20.6
-httpx
-pydantic
-python-dotenv
-SQLAlchemy
+web: uvicorn api.server:app --host 0.0.0.0 --port ${PORT:-8000}
+worker: python bot/run.py
