@@ -1,0 +1,8 @@
+# stop nginx container if binding 80 already
+sudo docker-compose -f docker-compose.prod.yml down nginx || true
+
+# install certbot on host and run:
+sudo apt update && sudo apt install -y certbot
+sudo certbot certonly --standalone -d your-domain.com -d www.your-domain.com
+
+# copy certs into deploy/nginx/certs or mount host path into container
