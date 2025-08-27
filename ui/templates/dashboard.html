@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SocialPipe Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1>🌍 SocialPipe Bot</h1>
+    <nav>
+      <a href="/">Dashboard</a> |
+      <a href="/settings">Settings</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Integrations Status</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Platform</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for integration in integrations %}
+        <tr>
+          <td>{{ integration.name }}</td>
+          <td>{{ integration.status }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>
