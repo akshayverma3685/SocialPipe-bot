@@ -1,0 +1,71 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ${DOCKER_IMAGE:-socialpipe/web:latest}
+    env_file:
+      - .env
+    restart: always
+    depends_on:
+      - db
+      - redis
+    networks:
+      - socialpipe-net
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ${DOCKER_IMAGE:-socialpipe/web:latest}
+    env_file:
+      - .env
+    restart: always
+    command: ["python", "bot/run.py"]
+    depends_on:
+      - db
+      - redis
+    networks:
+      - socialpipe-net
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: social
+      POSTGRES_PASSWORD: social
+      POSTGRES_DB: socialpipe
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - socialpipe-net
+
+  redis:
+    image: redis:7
+    restart: always
+    networks:
+      - socialpipe-net
+
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deploy/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./static:/var/www/static:ro
+      - ./deploy/nginx/certs:/etc/nginx/certs:ro
+    depends_on:
+      - web
+    restart: always
+    networks:
+      - socialpipe-net
+
+volumes:
+  db_data:
+
+networks:
+  socialpipe-net:
+    driver: bridge
