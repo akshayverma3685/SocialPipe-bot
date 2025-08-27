@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SocialPipe Settings</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1>⚙️ SocialPipe Settings</h1>
+    <nav>
+      <a href="/">Dashboard</a> |
+      <a href="/settings">Settings</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Update Bot Settings</h2>
+    <form method="post" action="/settings/save">
+      <label for="telegram_token">Telegram Bot Token:</label>
+      <input type="text" id="telegram_token" name="telegram_token" required>
+
+      <label for="owner_id">Owner ID:</label>
+      <input type="text" id="owner_id" name="owner_id" required>
+
+      <button type="submit">Save Settings</button>
+    </form>
+  </main>
+</body>
+</html>
