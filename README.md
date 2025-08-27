@@ -1,7 +1,9 @@
 <h1 align="center">🌍 SocialPipe Bot</h1>
 
 <p align="center">
-  <b>A multi-social hub bot that brings all your social media notifications & DMs into Telegram with reply support 💬</b>
+  <b>A multi-social hub bot that connects all your social media accounts (Instagram, WhatsApp, Twitter, Snapchat, etc.) into Telegram.
+You will receive all notifications, DMs, and updates directly in Telegram, organized by category.
+You can also reply from Telegram itself 💬</b>
 </p>
 
 <p align="center">
@@ -16,10 +18,6 @@
     <img src="https://railway.app/button.svg" alt="Deploy on Railway"/>
   </a>
 </p>
-
-A multi-social hub bot that connects all your social media accounts (Instagram, WhatsApp, Twitter, Snapchat, etc.) into Telegram.
-You will receive all notifications, DMs, and updates directly in Telegram, organized by category.
-You can also reply from Telegram itself 💬
 
 
 ---
